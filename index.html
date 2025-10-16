@@ -1,12 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Roblox Developer</title>
+    <title>ROLFSPEAKER - Portfolio</title>
     <style>
-        /* Reset and base styles */
         * {
             margin: 0;
             padding: 0;
@@ -15,225 +13,324 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            background-color: #0a0a0a;
             color: #ffffff;
-            line-height: 1.6;
         }
 
-        /* Navigation */
+        /* Navigation Bar */
         nav {
+            background-color: #2a2a2a;
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            padding: 1rem 2rem;
-            backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 2px solid #e74c3c;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
-        nav ul {
-            list-style: none;
+        .logo {
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-
-        nav a {
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: bold;
             color: #ffffff;
             text-decoration: none;
-            font-weight: 600;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #3498db;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .search-icon {
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: #ffffff;
             transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: #e74c3c;
+        .search-icon:hover {
+            color: #3498db;
         }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            margin-top: 80px;
+            height: 70vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(52, 152, 219, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        .hero-content {
             text-align: center;
+            z-index: 1;
             padding: 2rem;
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #e74c3c, #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            color: #cccccc;
-            margin-bottom: 2rem;
-        }
-
-        .cta-button {
-            padding: 1rem 2rem;
-            background: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 900;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            border: 5px solid #ffffff;
+            padding: 2rem 4rem;
             display: inline-block;
+            background-color: rgba(42, 42, 42, 0.8);
         }
 
-        .cta-button:hover {
-            background: #c0392b;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
-        }
-
-        /* Section styling */
+        /* Main Content Sections */
         section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
+            padding: 5rem 3rem;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         h2 {
             font-size: 2.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+            color: #3498db;
             text-align: center;
-            color: #e74c3c;
         }
 
         /* About Section */
         .about-content {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
+            background-color: #1a1a1a;
+            padding: 3rem;
             border-radius: 10px;
-            border: 1px solid rgba(231, 76, 60, 0.3);
+            border-left: 5px solid #3498db;
         }
 
         .about-content p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
             color: #cccccc;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         /* Projects Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
 
         .project-card {
-            background: rgba(255, 255, 255, 0.05);
+            background-color: #1a1a1a;
             border-radius: 10px;
-            padding: 2rem;
-            border: 1px solid rgba(231, 76, 60, 0.3);
-            transition: all 0.3s;
-            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            border-color: #e74c3c;
-            box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
+            border-color: #3498db;
         }
 
-        .project-card h3 {
-            color: #e74c3c;
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .project-info {
+            padding: 2rem;
+        }
+
+        .project-info h3 {
+            color: #3498db;
             margin-bottom: 1rem;
+            font-size: 1.5rem;
         }
 
-        .project-card p {
+        .project-info p {
             color: #cccccc;
-            margin-bottom: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
         }
 
         .project-link {
-            color: #ff6b6b;
+            color: #3498db;
             text-decoration: none;
             font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: #2ecc71;
         }
 
         /* Skills Section */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
         }
 
         .skill-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
+            background-color: #1a1a1a;
+            padding: 2rem;
             border-radius: 10px;
             text-align: center;
-            border: 1px solid rgba(231, 76, 60, 0.3);
+            border: 2px solid #2a2a2a;
             transition: all 0.3s;
         }
 
         .skill-card:hover {
-            border-color: #e74c3c;
+            border-color: #3498db;
             transform: scale(1.05);
         }
 
         .skill-card h3 {
-            color: #e74c3c;
-            margin-bottom: 0.5rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-level {
+            color: #2ecc71;
+            font-weight: 600;
         }
 
         /* Contact Section */
         .contact-content {
             text-align: center;
+            background-color: #1a1a1a;
+            padding: 3rem;
+            border-radius: 10px;
         }
 
-        .contact-links {
+        .contact-content p {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+        }
+
+        .contact-buttons {
             display: flex;
             justify-content: center;
             gap: 2rem;
-            margin-top: 2rem;
             flex-wrap: wrap;
         }
 
-        .contact-links a {
-            padding: 1rem 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(231, 76, 60, 0.3);
-            border-radius: 5px;
+        .contact-btn {
+            padding: 1rem 2.5rem;
+            background-color: #3498db;
             color: white;
             text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
             transition: all 0.3s;
+            border: 2px solid #3498db;
         }
 
-        .contact-links a:hover {
-            background: #e74c3c;
-            transform: translateY(-2px);
+        .contact-btn:hover {
+            background-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
         }
 
         /* Footer */
         footer {
+            background-color: #2a2a2a;
             text-align: center;
             padding: 2rem;
-            background: rgba(10, 10, 10, 0.95);
-            color: #cccccc;
+            color: #999999;
         }
 
-        /* Responsive */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            nav ul {
+            nav {
+                padding: 1rem;
                 flex-direction: column;
                 gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+                padding: 1.5rem 2rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
             }
         }
     </style>
@@ -241,72 +338,131 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <ul>
+        <a href="#home" class="logo">
+            <div class="logo-icon">🎮</div>
+            <span>RolfSpeaker</span>
+        </a>
+        <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#r15">R15 Animations</a></li>
+            <li><a href="#r6">R6 Animations</a></li>
+            <li><a href="#rigs">Custom Rigs</a></li>
         </ul>
+        <div class="search-icon">🔍</div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <h1>RolfSpeaker</h1>
-        <p>Luau Programmer | Full-Stack Developer | 5 Years of Experience</p>
-        <a href="#projects" class="cta-button">View My Work</a>
+        <div class="hero-content">
+            <h1 class="hero-title">ROLFSPEAKER</h1>
+        </div>
     </section>
 
     <!-- About Section -->
     <section id="about">
         <h2>About Me</h2>
         <div class="about-content">
-            <p>Hi! I'm a passionate Roblox developer with experience creating engaging gameplay experiences. I specialize in scripting, game mechanics, and bringing creative ideas to life on the Roblox platform.</p>
-            <p>I've been developing on Roblox for [X years] and have worked on various projects ranging from simulators to adventure games. I'm always looking to collaborate and create amazing experiences!</p>
+            <p>Yo! I'm RolfSpeaker, an aspiring full-stack programmer with a penchant for pushing boundaries. I breathe life into projects through a signature blend of creativity and efficacy.</p>
+            <p>With years of experience dabbling in combat & other dynamic gameplay systems, I've worked diligently to build a portfolio that leaves a lasting impression on my viewers.</p>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2>My Projects</h2>
+    <!-- R15 Animations Section -->
+    <section id="r15">
+        <h2>R15 Animations</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <h3>Project Name 1</h3>
-                <p>Description of your first project. Explain what makes it unique and what skills you used to create it.</p>
-                <a href="#" class="project-link">View Project →</a>
+                <div class="project-image">🏃</div>
+                <div class="project-info">
+                    <h3>Combat Animation Pack</h3>
+                    <p>A complete set of smooth combat animations including punches, kicks, and special moves for R15 characters.</p>
+                    <a href="#" class="project-link">View Details →</a>
+                </div>
             </div>
             <div class="project-card">
-                <h3>Project Name 2</h3>
-                <p>Description of your second project. Talk about the gameplay mechanics and features you implemented.</p>
-                <a href="#" class="project-link">View Project →</a>
+                <div class="project-image">💃</div>
+                <div class="project-info">
+                    <h3>Emote Collection</h3>
+                    <p>20+ unique emotes and dance animations designed for social games and roleplay experiences.</p>
+                    <a href="#" class="project-link">View Details →</a>
+                </div>
             </div>
             <div class="project-card">
-                <h3>Project Name 3</h3>
-                <p>Description of your third project. Highlight any challenges you overcame or cool features you added.</p>
-                <a href="#" class="project-link">View Project →</a>
+                <div class="project-image">⚔️</div>
+                <div class="project-info">
+                    <h3>Weapon Animations</h3>
+                    <p>Realistic weapon handling animations for swords, guns, and tools with smooth transitions.</p>
+                    <a href="#" class="project-link">View Details →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- R6 Animations Section -->
+    <section id="r6">
+        <h2>R6 Animations</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">🎮</div>
+                <div class="project-info">
+                    <h3>Classic Movement Pack</h3>
+                    <p>Nostalgic R6 animations with modern polish - perfect for retro-style games.</p>
+                    <a href="#" class="project-link">View Details →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">🥊</div>
+                <div class="project-info">
+                    <h3>Fighting System</h3>
+                    <p>Fast-paced combat animations optimized for R6 characters with combo support.</p>
+                    <a href="#" class="project-link">View Details →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Rigs Section -->
+    <section id="rigs">
+        <h2>Custom Rigs</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">🐉</div>
+                <div class="project-info">
+                    <h3>Creature Rigs</h3>
+                    <p>Custom-built rigs for dragons, monsters, and fantasy creatures with full animation support.</p>
+                    <a href="#" class="project-link">View Details →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">🤖</div>
+                <div class="project-info">
+                    <h3>Mech Suit Rig</h3>
+                    <p>Heavy-duty mechanical rig with complex joint systems and realistic movement.</p>
+                    <a href="#" class="project-link">View Details →</a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
     <section id="skills">
-        <h2>Skills</h2>
+        <h2>My Skills</h2>
         <div class="skills-grid">
             <div class="skill-card">
+                <h3>R15 Animation</h3>
+                <p class="skill-level">Expert</p>
+            </div>
+            <div class="skill-card">
+                <h3>R6 Animation</h3>
+                <p class="skill-level">Advanced</p>
+            </div>
+            <div class="skill-card">
+                <h3>Custom Rigging</h3>
+                <p class="skill-level">Advanced</p>
+            </div>
+            <div class="skill-card">
                 <h3>Lua Scripting</h3>
-                <p>Advanced</p>
-            </div>
-            <div class="skill-card">
-                <h3>Game Design</h3>
-                <p>Intermediate</p>
-            </div>
-            <div class="skill-card">
-                <h3>UI/UX Design</h3>
-                <p>Intermediate</p>
-            </div>
-            <div class="skill-card">
-                <h3>3D Modeling</h3>
-                <p>Beginner</p>
+                <p class="skill-level">Intermediate</p>
             </div>
         </div>
     </section>
@@ -315,47 +471,71 @@
     <section id="contact">
         <h2>Get In Touch</h2>
         <div class="contact-content">
-            <p>Interested in working together? Feel free to reach out!</p>
-            <div class="contact-links">
-                <a href="https://www.roblox.com/users/YOURID/profile" target="_blank">Roblox Profile</a>
-                <a href="https://discord.com/users/YOURID" target="_blank">Discord</a>
-                <a href="https://twitter.com/YOURHANDLE" target="_blank">Twitter</a>
-                <a href="mailto:your.email@example.com">Email</a>
+            <p>Interested in custom animations or rigs? Let's work together!</p>
+            <div class="contact-buttons">
+                <a href="https://www.roblox.com/users/YOURID/profile" class="contact-btn" target="_blank">Roblox Profile</a>
+                <a href="https://discord.com/users/YOURID" class="contact-btn" target="_blank">Discord</a>
+                <a href="https://twitter.com/YOURHANDLE" class="contact-btn" target="_blank">Twitter</a>
+                <a href="mailto:your.email@example.com" class="contact-btn">Email Me</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Your Name. All rights reserved.</p>
+        <p>&copy; 2025 ROLFSPEAKER. All rights reserved.</p>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // Smooth scrolling for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // Add animation when project cards come into view
+        // Add active state to nav links on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            const navHeight = document.querySelector('nav').offsetHeight;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - navHeight - 100;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate project cards on scroll
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '0';
-                    entry.target.style.transform = 'translateY(20px)';
+                    entry.target.style.transform = 'translateY(30px)';
                     
                     setTimeout(() => {
                         entry.target.style.transition = 'all 0.6s ease';
@@ -368,8 +548,7 @@
             });
         }, observerOptions);
 
-        // Observe all project cards
-        document.querySelectorAll('.project-card').forEach(card => {
+        document.querySelectorAll('.project-card, .skill-card').forEach(card => {
             observer.observe(card);
         });
     </script>
