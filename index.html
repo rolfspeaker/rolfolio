@@ -39,20 +39,42 @@
         background-color: #0a0a0a; /* your site’s background color */
         }
 
-        /* Left-side Filia image */
+        /* Left-side Filia image with subtle afterimage style */
         body::before {
             content: "";
             position: fixed;
             top: 0;
-            left: 0;
-            width: 45vw; /* takes up ~45% of the screen width */
-            height: 100vh; /* full height of viewport */
+            left: -25vw; /* more to the left */
+            width: 70vw;
+            height: 120vh;
             background: url('filia.png') no-repeat left center;
-            background-size: cover; /* scales up to fill side */
-            opacity: 0.18; /* adjust for visibility */
-            pointer-events: none; /* allows interaction through image */
-            z-index: -1; /* keeps it behind everything */
+            background-size: 130% auto;
+            opacity: 0.08;
+            filter: blur(2px) brightness(0.7) contrast(110%);
+            pointer-events: none;
+            z-index: -1;
         }
+
+        /* Right-side Kazuya image with subtle afterimage style */
+        /*
+       body::after {
+            content: "";
+            position: fixed;
+            top: 10vh;
+            right: 5vw;        
+            width: 55vw;
+            height: 95vh;
+            background: url('kazuya2.webp') no-repeat right center;
+            background-size: contain;
+            opacity: 0.1;
+            filter: blur(2px) brightness(0.7) contrast(110%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        */
+
+
+
 
         /* Main Container */
         .container {
@@ -300,17 +322,17 @@
         }
 
        .about-image {
-            width: 100%;
-            max-width: 400px; /* optional — controls how wide it can get */
-            margin: 0 auto; /* centers it */
+            flex: 0 0 400px;
+            border: 3px solid #333;
+            background: rgba(20, 20, 20, 0.8);
+            padding: 2rem;
             overflow: hidden;
-            border-radius: 12px; /* optional rounded corners */
         }
 
         .about-image img {
             width: 100%;
-            height: auto; /* keeps proportions */
-            object-fit: cover; /* makes it look clean if container limits height */
+            height: auto;
+            object-fit: cover;
             display: block;
         }
 
@@ -438,48 +460,58 @@
             letter-spacing: 2px;
         }
 
-        /* Contact Section */
+       /* Contact Section */
+        #contact {
+            padding: 6rem 3rem;
+            text-align: center;
+        }
+
         .contact-grid {
-            display: flex;
-            justify-content: center;
-            gap: 5rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
         }
 
         .contact-card {
-            background: rgba(20, 20, 20, 0.8);
-            border: 2px solid #333;
-            border-left: 4px solid #ff0000;
-            padding: 3rem;
-            text-align: center;
-            min-width: 300px;
-            transition: all 0.3s;
+        background: #121212;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        text-align: center;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .contact-card:hover {
-            background: rgba(40, 40, 40, 0.9);
-            border-color: #ff0000;
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .contact-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            color: #ff3333;
+        .contact-icon img {
+        width: 64px;
+        height: 64px;
+        object-fit: contain;
+        margin-bottom: 1rem;
+        transition: transform 0.2s ease;
+        filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
+        }
+
+        .contact-card:hover .contact-icon img {
+        transform: scale(1.05);
         }
 
         .contact-label {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #ff3333;
-            margin-bottom: 1rem;
-            font-style: italic;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: #f1f1f1;
         }
 
         .contact-value {
-            color: #cccccc;
-            font-size: 1.2rem;
+        color: #aaa;
+        font-size: 0.9rem;
+        word-break: break-all;
         }
+
+
 
         /* Footer */
         footer {
@@ -524,7 +556,7 @@
             <div class="menu-container">
                 <div class="menu-title">
                     <div class="menu-icon">◉</div>
-                    <h2>SCENARIO CAMPAIGN</h2>
+                    <h2>PORTFOLIO CAMPAIGN</h2>
                 </div>
                 <div class="menu-description">
                     Enjoy the gallery walk, decorated in a style you won't find anywhere else.
@@ -548,31 +580,32 @@
                     <h2>About</h2>
                 </div>
             </div>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="rolf_dog_pfp.png" alt="About Image" width="100%" height="500">
-                </div>
-                </div>
-                <div class="about-text">
-                    <p>
-                        What's up? I'm RolfSpeaker, an aspiring full-stack Luau programmer with a penchant for pushing boundaries. I breathe life into projects through a signature blend of creativity and efficacy. With years of experience dabbling in combat & other dynamic gameplay systems, I've worked diligently to build a portfolio that leaves a lasting impression on my viewers.
-                    </p>
-                    <div class="about-stats">
-                        <div class="stat-row">
-                            <strong>Name:</strong>
-                            <span>RolfSpeaker</span>
-                        </div>
-                        <div class="stat-row">
-                            <strong>Languages:</strong>
-                            <span>Python, Java, JavaScript, Luau</span>
-                        </div>
-                        <div class="stat-row">
-                            <strong>Contributions:</strong>
-                            <span>Steal A Planet, TBA</span>
-                        </div>
-                    </div>
-                </div>
+           <div class="about-content">
+    <div class="about-left">
+        <div class="about-image">
+            <img src="rolf_dog_pfp.png" alt="NOT a real photo of ROLFSPEAKER">
+        </div>
+    </div>
+    <div class="about-text">
+        <p>
+            What's up? I'm RolfSpeaker, an aspiring full-stack Luau programmer with a penchant for pushing boundaries. I breathe life into projects through a signature blend of creativity and efficacy. With years of experience dabbling in combat & other dynamic gameplay systems, I've worked diligently to build a portfolio that leaves a lasting impression on my viewers.
+        </p>
+        <div class="about-stats">
+            <div class="stat-row">
+                <strong>Quick Contact:</strong>
+                <span>I_like_pancakes_and_ducks#5751 on Discord</span>
             </div>
+            <div class="stat-row">
+                <strong>Languages:</strong>
+                <span>Python, Java, JavaScript, Luau</span>
+            </div>
+            <div class="stat-row">
+                <strong>Contributions:</strong>
+                <span>Steal A Planet, TBA</span>
+            </div>
+        </div>
+    </div>
+</div>
         </section>
 
         <!-- Services Section -->
@@ -580,7 +613,7 @@
             <div class="section-header">
                 <div class="section-title-box">
                     <div class="icon">◉</div>
-                    <h2>Services</h2>
+                    <h2>Specialty</h2>
                 </div>
             </div>
             <div class="services-grid">
@@ -601,61 +634,93 @@
 
         <!-- Projects Section -->
         <section id="projects">
-            <div class="section-header">
-                <div class="section-title-box">
-                    <div class="icon">◉</div>
-                    <h2>Projects</h2>
-                </div>
+        <div class="section-header">
+            <div class="section-title-box">
+            <div class="icon">◉</div>
+            <h2>Projects</h2>
             </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-video">Video Slot 1</div>
-                    <div class="project-info">
-                        <h3>Project Title 1</h3>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-video">Video Slot 2</div>
-                    <div class="project-info">
-                        <h3>Project Title 2</h3>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-video">Video Slot 3</div>
-                    <div class="project-info">
-                        <h3>Project Title 3</h3>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-video">Video Slot 4</div>
-                    <div class="project-info">
-                        <h3>Project Title 4</h3>
-                    </div>
-                </div>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+            <div class="project-video">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VVTmt7V75L8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+            <div class="project-info">
+                <h3>Blue Lock: Rivals Kit</h3>
+            </div>
+            </div>
+            <div class="project-card">
+            <div class="project-video">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/-xjTI5SYc0w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="project-info">
+                <h3>Yuji Itadori Moveset</h3>
+            </div>
+            </div>
+            <div class="project-card">
+            <div class="project-video">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/HpxjM5hChBA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="project-info">
+                <h3>(OLD) Flame Magic Moveset</h3>
+            </div>
+            </div>
+            <div class="project-card">
+            <div class="project-video">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/7DKoVZvAi0M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="project-info">
+                <h3>TSBG-Styled Combat System</h3>
+            </div>
+            </div>
+        </div>
         </section>
+
 
         <!-- Contact Section -->
         <section id="contact">
             <div class="section-header">
                 <div class="section-title-box">
-                    <div class="icon">◉</div>
-                    <h2>Contact</h2>
+                <div class="icon">◉</div>
+                <h2>Contact & Socials</h2>
                 </div>
             </div>
+
             <div class="contact-grid">
                 <div class="contact-card">
-                    <div class="contact-icon">💬</div>
-                    <p class="contact-label">Discord</p>
-                    <p class="contact-value">I_like_pancakes_and_ducks#5751</p>
+                <div class="contact-icon">
+                    <img src="gmail_logo.png" alt="Email Icon">
                 </div>
+                <p class="contact-label">Email</p>
+                <p class="contact-value">rolfspeaker@gmail.com</p>
+                </div>
+
                 <div class="contact-card">
-                    <div class="contact-icon">✉️</div>
-                    <p class="contact-label">Email</p>
-                    <p class="contact-value">rolfspeaker@gmail.com</p>
+                <div class="contact-icon">
+                    <img src="discord_logo.png" alt="Discord Icon">
+                </div>
+                <p class="contact-label">Discord Server</p>
+                <p class="contact-value">discord.gg/AVRbdzCApw</p>
+                </div>
+
+                <div class="contact-card">
+                <div class="contact-icon">
+                    <img src="youtube_icon.webp" alt="YouTube Icon">
+                </div>
+                <p class="contact-label">YouTube Channel</p>
+                <p class="contact-value">https://www.youtube.com/@rolfspeaker6816</p>
+                </div>
+
+                <div class="contact-card">
+                <div class="contact-icon">
+                    <img src="payhip_logo.png" alt="Store Icon">
+                </div>
+                <p class="contact-label">Storefront</p>
+                <p class="contact-value">https://payhip.com/RolfSpeaker</p>
                 </div>
             </div>
         </section>
+
 
         <!-- Footer -->
         <footer>
@@ -665,7 +730,7 @@
 
     <!-- Info Banner -->
     <div class="info-banner">
-        This version is evidently a prototype. Final build coming this Augustember.
+        This version is evidently a prototype. Final build coming this Falluary.
     </div>
 
     <!-- Bottom Controls -->
