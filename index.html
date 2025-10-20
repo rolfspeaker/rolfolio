@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROLFSPEAKER - Portfolio</title>
+    <title>RolfSpeaker - Portfolio</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -12,544 +14,680 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0a0a0a;
+            font-family: 'Rajdhani', sans-serif;
+            background: #000000;
             color: #ffffff;
+            overflow-x: hidden;
         }
 
-        /* Navigation Bar */
-        nav {
-            background-color: #2a2a2a;
-            padding: 1rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* Background image overlay */
+        body::before {
+            content: '';
             position: fixed;
             top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #ffffff;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #3498db, #2ecc71);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: #3498db;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
             left: 0;
-            width: 0;
-            height: 2px;
-            background-color: #3498db;
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after {
             width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
+            z-index: 0;
+            pointer-events: none;
         }
 
-        .search-icon {
-            cursor: pointer;
-            font-size: 1.3rem;
-            color: #ffffff;
-            transition: color 0.3s;
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 1;
         }
 
-        .search-icon:hover {
-            color: #3498db;
+        /* Top Border */
+        .top-border {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ff0000 0%, #ff6666 50%, #ff0000 100%);
+            z-index: 1000;
+        }
+
+        /* Bottom Border */
+        .bottom-border {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ff0000 0%, #ff6666 50%, #ff0000 100%);
+            z-index: 1000;
         }
 
         /* Hero Section */
         .hero {
-            margin-top: 80px;
-            height: 70vh;
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 0 5rem;
             position: relative;
-            overflow: hidden;
         }
 
         .hero::before {
             content: '';
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background-image: radial-gradient(circle, rgba(52, 152, 219, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveGrid 20s linear infinite;
+            background: radial-gradient(ellipse at 30% 50%, rgba(255, 0, 0, 0.15) 0%, transparent 60%);
+            pointer-events: none;
         }
 
-        @keyframes moveGrid {
-            0% {
-                transform: translate(0, 0);
-            }
-            100% {
-                transform: translate(50px, 50px);
-            }
+        .menu-container {
+            flex: 1;
+            max-width: 800px;
         }
 
-        .hero-content {
-            text-align: center;
-            z-index: 1;
-            padding: 2rem;
+        .menu-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem 2rem;
+            background: rgba(20, 20, 20, 0.8);
+            border-left: 4px solid #ff0000;
         }
 
-        .hero-title {
-            font-size: 5rem;
-            font-weight: 900;
-            color: #ffffff;
+        .menu-icon {
+            width: 30px;
+            height: 30px;
+            background: #ff0000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .menu-title h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff3333;
             text-transform: uppercase;
             letter-spacing: 3px;
-            border: 5px solid #ffffff;
-            padding: 2rem 4rem;
-            display: inline-block;
-            background-color: rgba(42, 42, 42, 0.8);
+            font-style: italic;
         }
 
-        /* Main Content Sections */
-        section {
-            padding: 5rem 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
+        .menu-description {
+            padding: 0 2rem 2rem 2rem;
+            font-size: 1.1rem;
+            color: #cccccc;
+            font-style: italic;
+            background: rgba(20, 20, 20, 0.6);
+            margin-bottom: 2rem;
         }
 
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #3498db;
+        .menu-list {
+            list-style: none;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            margin: 0.5rem 0;
+            background: rgba(20, 20, 20, 0.6);
+            border-left: 3px solid transparent;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .menu-item:hover,
+        .menu-item.active {
+            background: rgba(40, 40, 40, 0.8);
+            border-left-color: #ff0000;
+            transform: translateX(10px);
+        }
+
+        .menu-item::before {
+            content: '◉';
+            color: #666666;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .menu-item:hover::before,
+        .menu-item.active::before {
+            color: #ff0000;
+        }
+
+        .menu-item span {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-style: italic;
+        }
+
+        /* Info Banner */
+        .info-banner {
+            position: fixed;
+            bottom: 60px;
+            left: 0;
+            width: 100%;
+            background: rgba(20, 20, 20, 0.9);
+            padding: 1rem 2rem;
             text-align: center;
+            color: #cccccc;
+            font-size: 1rem;
+            font-style: italic;
+            border-top: 2px solid #333;
+            z-index: 999;
+        }
+
+        /* Bottom Controls */
+        .bottom-controls {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            z-index: 1000;
+            border-top: 2px solid #333;
+        }
+
+        .control-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .control-icon {
+            color: #ff0000;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        /* Content Sections */
+        section {
+            min-height: 100vh;
+            padding: 5rem 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-title-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            background: rgba(20, 20, 20, 0.8);
+            border-left: 4px solid #ff0000;
+        }
+
+        .section-title-box .icon {
+            width: 30px;
+            height: 30px;
+            background: #ff0000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .section-title-box h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ff3333;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-style: italic;
         }
 
         /* About Section */
         .about-content {
-            background-color: #1a1a1a;
-            padding: 3rem;
-            border-radius: 10px;
-            border-left: 5px solid #3498db;
+            display: flex;
+            gap: 4rem;
+            align-items: center;
         }
 
-        .about-content p {
-            font-size: 1.2rem;
-            line-height: 1.8;
+        .about-image {
+            flex: 1;
+            border: 3px solid #333;
+            background: rgba(20, 20, 20, 0.8);
+            padding: 2rem;
+        }
+
+        .about-text {
+            flex: 1.5;
+            background: rgba(20, 20, 20, 0.6);
+            padding: 3rem;
+            border-left: 4px solid #ff0000;
+        }
+
+        .about-text p {
+            font-size: 1.3rem;
+            line-height: 1.9;
             color: #cccccc;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-row {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            background: rgba(40, 40, 40, 0.8);
+            border-left: 3px solid #ff0000;
+        }
+
+        .stat-row strong {
+            min-width: 200px;
+            color: #ff3333;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-row span {
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 2px solid #333;
+            border-left: 4px solid #ff0000;
+            padding: 2.5rem 2rem;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            background: rgba(40, 40, 40, 0.9);
+            border-color: #ff0000;
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: #ff3333;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-style: italic;
+        }
+
+        .service-card p {
+            color: #aaaaaa;
+            line-height: 1.8;
+            font-size: 1.1rem;
         }
 
         /* Projects Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
         }
 
         .project-card {
-            background-color: #1a1a1a;
-            border-radius: 10px;
+            background: rgba(20, 20, 20, 0.8);
+            border: 2px solid #333;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 2px solid transparent;
+            transition: all 0.3s;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
-            border-color: #3498db;
+            border-color: #ff0000;
         }
 
-        .project-image {
+        .project-video {
             width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #3498db, #2ecc71);
+            height: 350px;
+            background: #1a1a1a;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            color: white;
+            color: #666;
+            font-size: 1.3rem;
+            font-family: 'Orbitron', sans-serif;
+            font-style: italic;
         }
 
         .project-info {
-            padding: 2rem;
+            padding: 1.5rem 2rem;
+            background: rgba(30, 30, 30, 0.9);
+            border-top: 2px solid #ff0000;
         }
 
         .project-info h3 {
-            color: #3498db;
-            margin-bottom: 1rem;
+            font-family: 'Orbitron', sans-serif;
             font-size: 1.5rem;
-        }
-
-        .project-info p {
-            color: #cccccc;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-link {
-            color: #3498db;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .project-link:hover {
-            color: #2ecc71;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-card {
-            background-color: #1a1a1a;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            border: 2px solid #2a2a2a;
-            transition: all 0.3s;
-        }
-
-        .skill-card:hover {
-            border-color: #3498db;
-            transform: scale(1.05);
-        }
-
-        .skill-card h3 {
-            color: #3498db;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .skill-level {
-            color: #2ecc71;
-            font-weight: 600;
+            color: #ff3333;
+            font-style: italic;
+            letter-spacing: 2px;
         }
 
         /* Contact Section */
-        .contact-content {
-            text-align: center;
-            background-color: #1a1a1a;
-            padding: 3rem;
-            border-radius: 10px;
-        }
-
-        .contact-content p {
-            font-size: 1.2rem;
-            color: #cccccc;
-            margin-bottom: 2rem;
-        }
-
-        .contact-buttons {
+        .contact-grid {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
+            gap: 5rem;
         }
 
-        .contact-btn {
-            padding: 1rem 2.5rem;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
+        .contact-card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 2px solid #333;
+            border-left: 4px solid #ff0000;
+            padding: 3rem;
+            text-align: center;
+            min-width: 300px;
             transition: all 0.3s;
-            border: 2px solid #3498db;
         }
 
-        .contact-btn:hover {
-            background-color: transparent;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        .contact-card:hover {
+            background: rgba(40, 40, 40, 0.9);
+            border-color: #ff0000;
+        }
+
+        .contact-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: #ff3333;
+        }
+
+        .contact-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ff3333;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .contact-value {
+            color: #cccccc;
+            font-size: 1.2rem;
         }
 
         /* Footer */
         footer {
-            background-color: #2a2a2a;
-            text-align: center;
+            background: rgba(10, 10, 10, 0.95);
             padding: 2rem;
-            color: #999999;
+            text-align: center;
+            color: #666;
+            margin-bottom: 120px;
+            border-top: 2px solid #333;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            nav {
-                padding: 1rem;
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                padding: 2rem;
+            }
+
+            .services-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
                 flex-direction: column;
-                gap: 1rem;
             }
 
-            .nav-links {
-                gap: 1rem;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
-                padding: 1.5rem 2rem;
-            }
-
-            section {
-                padding: 3rem 1.5rem;
+            .contact-grid {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <a href="#home" class="logo">
-            <div class="logo-icon">🎮</div>
-            <span>RolfSpeaker</span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#r15">R15 Animations</a></li>
-            <li><a href="#r6">R6 Animations</a></li>
-            <li><a href="#rigs">Custom Rigs</a></li>
-        </ul>
-        <div class="search-icon">🔍</div>
-    </nav>
+    <!-- Top Border -->
+    <div class="top-border"></div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">ROLFSPEAKER</h1>
-        </div>
-    </section>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section id="home" class="hero" style="opacity: 1; transform: translateY(0);">
+            <div class="menu-container">
+                <div class="menu-title">
+                    <div class="menu-icon">◉</div>
+                    <h2>SCENARIO CAMPAIGN</h2>
+                </div>
+                <div class="menu-description">
+                    Enjoy the one/two player story mode unique to the console version.
+                </div>
+                
+                <ul class="menu-list">
+                    <li><a href="#about" class="menu-item"><span>Online Mode</span></a></li>
+                    <li><a href="#services" class="menu-item"><span>Offline Mode</span></a></li>
+                    <li><a href="#projects" class="menu-item"><span>Gallery</span></a></li>
+                    <li><a href="#contact" class="menu-item"><span>Profile</span></a></li>
+                    <li><a href="#" class="menu-item"><span>Options</span></a></li>
+                </ul>
+            </div>
+        </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <p>Yo! I'm RolfSpeaker, an aspiring full-stack programmer with a penchant for pushing boundaries. I breathe life into projects through a signature blend of creativity and efficacy.</p>
-            <p>With years of experience dabbling in combat & other dynamic gameplay systems, I've worked diligently to build a portfolio that leaves a lasting impression on my viewers.</p>
-        </div>
-    </section>
-
-    <!-- R15 Animations Section -->
-    <section id="r15">
-        <h2>R15 Animations</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-image">🏃</div>
-                <div class="project-info">
-                    <h3>Combat Animation Pack</h3>
-                    <p>A complete set of smooth combat animations including punches, kicks, and special moves for R15 characters.</p>
-                    <a href="#" class="project-link">View Details →</a>
+        <!-- About Section -->
+        <section id="about">
+            <div class="section-header">
+                <div class="section-title-box">
+                    <div class="icon">◉</div>
+                    <h2>About</h2>
                 </div>
             </div>
-            <div class="project-card">
-                <div class="project-image">💃</div>
-                <div class="project-info">
-                    <h3>Emote Collection</h3>
-                    <p>20+ unique emotes and dance animations designed for social games and roleplay experiences.</p>
-                    <a href="#" class="project-link">View Details →</a>
+            <div class="about-content">
+                <div class="about-image">
+                    <svg width="100%" height="500" viewBox="0 0 400 500">
+                        <rect width="400" height="500" fill="#1a1a1a"/>
+                        <circle cx="200" cy="180" r="90" fill="#2a2a2a"/>
+                        <rect x="100" y="290" width="200" height="180" fill="#2a2a2a"/>
+                    </svg>
+                </div>
+                <div class="about-text">
+                    <p>
+                        Yo! I'm RolfSpeaker, an aspiring full-stack programmer with a penchant for pushing boundaries. I breathe life into projects through a signature blend of creativity and efficacy. With years of experience dabbling in combat & other dynamic gameplay systems, I've worked diligently to build a portfolio that leaves a lasting impression on my viewers.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-row">
+                            <strong>Name:</strong>
+                            <span>RolfSpeaker</span>
+                        </div>
+                        <div class="stat-row">
+                            <strong>Languages:</strong>
+                            <span>Python, Java, JavaScript, Luau</span>
+                        </div>
+                        <div class="stat-row">
+                            <strong>Commissions:</strong>
+                            <span>50+ Complete</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="project-card">
-                <div class="project-image">⚔️</div>
-                <div class="project-info">
-                    <h3>Weapon Animations</h3>
-                    <p>Realistic weapon handling animations for swords, guns, and tools with smooth transitions.</p>
-                    <a href="#" class="project-link">View Details →</a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- R6 Animations Section -->
-    <section id="r6">
-        <h2>R6 Animations</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-image">🎮</div>
-                <div class="project-info">
-                    <h3>Classic Movement Pack</h3>
-                    <p>Nostalgic R6 animations with modern polish - perfect for retro-style games.</p>
-                    <a href="#" class="project-link">View Details →</a>
+        <!-- Services Section -->
+        <section id="services">
+            <div class="section-header">
+                <div class="section-title-box">
+                    <div class="icon">◉</div>
+                    <h2>Services</h2>
                 </div>
             </div>
-            <div class="project-card">
-                <div class="project-image">🥊</div>
-                <div class="project-info">
-                    <h3>Fighting System</h3>
-                    <p>Fast-paced combat animations optimized for R6 characters with combo support.</p>
-                    <a href="#" class="project-link">View Details →</a>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Combat & PvP</h3>
+                    <p>Responsive combat systems and movesets with clean, robust code that works just as intended.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Interactive Systems & Mechanics</h3>
+                    <p>From stamina bars to inventory & shop systems, I deliver memorable spins on common gameplay components.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Core Gameplay Elements & Functions</h3>
+                    <p>Expect performance-friendly works, such as game round systems and dynamic weather/natural disaster systems.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Custom Rigs Section -->
-    <section id="rigs">
-        <h2>Custom Rigs</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-image">🐉</div>
-                <div class="project-info">
-                    <h3>Creature Rigs</h3>
-                    <p>Custom-built rigs for dragons, monsters, and fantasy creatures with full animation support.</p>
-                    <a href="#" class="project-link">View Details →</a>
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="section-header">
+                <div class="section-title-box">
+                    <div class="icon">◉</div>
+                    <h2>Projects</h2>
                 </div>
             </div>
-            <div class="project-card">
-                <div class="project-image">🤖</div>
-                <div class="project-info">
-                    <h3>Mech Suit Rig</h3>
-                    <p>Heavy-duty mechanical rig with complex joint systems and realistic movement.</p>
-                    <a href="#" class="project-link">View Details →</a>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-video">Video Slot 1</div>
+                    <div class="project-info">
+                        <h3>Project Title 1</h3>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-video">Video Slot 2</div>
+                    <div class="project-info">
+                        <h3>Project Title 2</h3>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-video">Video Slot 3</div>
+                    <div class="project-info">
+                        <h3>Project Title 3</h3>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-video">Video Slot 4</div>
+                    <div class="project-info">
+                        <h3>Project Title 4</h3>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2>My Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <h3>R15 Animation</h3>
-                <p class="skill-level">Expert</p>
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="section-header">
+                <div class="section-title-box">
+                    <div class="icon">◉</div>
+                    <h2>Contact</h2>
+                </div>
             </div>
-            <div class="skill-card">
-                <h3>R6 Animation</h3>
-                <p class="skill-level">Advanced</p>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">💬</div>
+                    <p class="contact-label">Discord</p>
+                    <p class="contact-value">YourDiscord#0000</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <p class="contact-label">Email</p>
+                    <p class="contact-value">your.email@example.com</p>
+                </div>
             </div>
-            <div class="skill-card">
-                <h3>Custom Rigging</h3>
-                <p class="skill-level">Advanced</p>
-            </div>
-            <div class="skill-card">
-                <h3>Lua Scripting</h3>
-                <p class="skill-level">Intermediate</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Get In Touch</h2>
-        <div class="contact-content">
-            <p>Interested in custom animations or rigs? Let's work together!</p>
-            <div class="contact-buttons">
-                <a href="https://www.roblox.com/users/YOURID/profile" class="contact-btn" target="_blank">Roblox Profile</a>
-                <a href="https://discord.com/users/YOURID" class="contact-btn" target="_blank">Discord</a>
-                <a href="https://twitter.com/YOURHANDLE" class="contact-btn" target="_blank">Twitter</a>
-                <a href="mailto:your.email@example.com" class="contact-btn">Email Me</a>
-            </div>
-        </div>
-    </section>
+        <!-- Footer -->
+        <footer>
+            <p>Copyright ©2025 RolfSpeaker | All Rights Reserved</p>
+        </footer>
+    </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 ROLFSPEAKER. All rights reserved.</p>
-    </footer>
+    <!-- Info Banner -->
+    <div class="info-banner">
+        This version was created especially for E3. Portfolio coming this fall.
+    </div>
+
+    <!-- Bottom Controls -->
+    <div class="bottom-controls">
+        <div class="control-btn">
+            <span class="control-icon">⚊</span>
+            <span>Select</span>
+        </div>
+        <div class="control-btn">
+            <span>Enter</span>
+            <span class="control-icon">✕</span>
+        </div>
+    </div>
+
+    <!-- Bottom Border -->
+    <div class="bottom-border"></div>
 
     <script>
-        // Smooth scrolling for navigation
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const navHeight = document.querySelector('nav').offsetHeight;
-                    const targetPosition = target.offsetTop - navHeight;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
 
-        // Add active state to nav links on scroll
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const sections = document.querySelectorAll('section');
-            const navHeight = document.querySelector('nav').offsetHeight;
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - navHeight - 100;
-                const sectionHeight = section.clientHeight;
-                if (window.scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Animate project cards on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        // Scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '0';
-                    entry.target.style.transform = 'translateY(30px)';
-                    
-                    setTimeout(() => {
-                        entry.target.style.transition = 'all 0.6s ease';
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, 100);
-                    
-                    observer.unobserve(entry.target);
+                    entry.target.classList.add('visible');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.15 });
 
-        document.querySelectorAll('.project-card, .skill-card').forEach(card => {
-            observer.observe(card);
+        document.querySelectorAll('section:not(#home)').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Active menu item
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
         });
     </script>
 </body>
