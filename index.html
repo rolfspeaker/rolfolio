@@ -128,7 +128,8 @@
             flex: 1;
             max-width: 800px;
         }
-
+        
+        
         .menu-title {
             display: flex;
             align-items: center;
@@ -139,17 +140,32 @@
             border-left: 4px solid #ff0000;
         }
 
+        .menu-title h2.subtle-glow {
+            color: #ff3333; /* base color */
+            text-shadow:
+                0 0 5px rgba(255, 51, 51, 0.5),
+                0 0 10px rgba(255, 51, 51, 0.35),
+                0 0 15px rgba(255, 51, 51, 0.25);
+        }
+
+        
         .menu-icon {
-            width: 30px;
-            height: 30px;
             background: #ff0000;
             border-radius: 50%;
+            box-shadow:
+                0 0 8px #ff3333,
+                0 0 16px #ff6666,
+                0 0 24px #ff0000;
+            color: white; /* for the ◉ character inside */
+            font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
             font-size: 1.2rem;
+            width: 30px;
+            height: 30px;
         }
+
 
         .menu-title h2 {
             font-family: 'Orbitron', sans-serif;
@@ -556,7 +572,7 @@
             <div class="menu-container">
                 <div class="menu-title">
                     <div class="menu-icon">◉</div>
-                    <h2>PORTFOLIO CAMPAIGN</h2>
+                    <h2 class="subtle-glow">PORTFOLIO CAMPAIGN</h2>
                 </div>
                 <div class="menu-description">
                     Enjoy the gallery walk, decorated in a style you won't find anywhere else.
