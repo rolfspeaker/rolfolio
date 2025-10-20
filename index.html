@@ -19,7 +19,8 @@
             color: #ffffff;
             overflow-x: hidden;
         }
-
+        
+        
         /* Background image overlay */
         body::before {
             content: '';
@@ -31,6 +32,26 @@
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
             z-index: 0;
             pointer-events: none;
+        }
+
+        body {
+        position: relative;
+        background-color: #0a0a0a; /* your site’s background color */
+        }
+
+        /* Left-side Filia image */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 45vw; /* takes up ~45% of the screen width */
+            height: 100vh; /* full height of viewport */
+            background: url('filia.png') no-repeat left center;
+            background-size: cover; /* scales up to fill side */
+            opacity: 0.18; /* adjust for visibility */
+            pointer-events: none; /* allows interaction through image */
+            z-index: -1; /* keeps it behind everything */
         }
 
         /* Main Container */
@@ -278,11 +299,19 @@
             align-items: center;
         }
 
-        .about-image {
-            flex: 1;
-            border: 3px solid #333;
-            background: rgba(20, 20, 20, 0.8);
-            padding: 2rem;
+       .about-image {
+            width: 100%;
+            max-width: 400px; /* optional — controls how wide it can get */
+            margin: 0 auto; /* centers it */
+            overflow: hidden;
+            border-radius: 12px; /* optional rounded corners */
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto; /* keeps proportions */
+            object-fit: cover; /* makes it look clean if container limits height */
+            display: block;
         }
 
         .about-text {
@@ -498,15 +527,15 @@
                     <h2>SCENARIO CAMPAIGN</h2>
                 </div>
                 <div class="menu-description">
-                    Enjoy the one/two player story mode unique to the console version.
+                    Enjoy the gallery walk, decorated in a style you won't find anywhere else.
                 </div>
                 
                 <ul class="menu-list">
-                    <li><a href="#about" class="menu-item"><span>Online Mode</span></a></li>
-                    <li><a href="#services" class="menu-item"><span>Offline Mode</span></a></li>
+                    <li><a href="#about" class="menu-item"><span>Story Mode</span></a></li>
+                    <li><a href="#services" class="menu-item"><span>Services</span></a></li>
                     <li><a href="#projects" class="menu-item"><span>Gallery</span></a></li>
-                    <li><a href="#contact" class="menu-item"><span>Profile</span></a></li>
-                    <li><a href="#" class="menu-item"><span>Options</span></a></li>
+                    <li><a href="#contact" class="menu-item"><span>Options</span></a></li>
+                    <li><a href="#" class="menu-item"><span>V.S. Mode</span></a></li>
                 </ul>
             </div>
         </section>
@@ -521,15 +550,12 @@
             </div>
             <div class="about-content">
                 <div class="about-image">
-                    <svg width="100%" height="500" viewBox="0 0 400 500">
-                        <rect width="400" height="500" fill="#1a1a1a"/>
-                        <circle cx="200" cy="180" r="90" fill="#2a2a2a"/>
-                        <rect x="100" y="290" width="200" height="180" fill="#2a2a2a"/>
-                    </svg>
+                    <img src="rolf_dog_pfp.png" alt="About Image" width="100%" height="500">
+                </div>
                 </div>
                 <div class="about-text">
                     <p>
-                        Yo! I'm RolfSpeaker, an aspiring full-stack programmer with a penchant for pushing boundaries. I breathe life into projects through a signature blend of creativity and efficacy. With years of experience dabbling in combat & other dynamic gameplay systems, I've worked diligently to build a portfolio that leaves a lasting impression on my viewers.
+                        What's up? I'm RolfSpeaker, an aspiring full-stack Luau programmer with a penchant for pushing boundaries. I breathe life into projects through a signature blend of creativity and efficacy. With years of experience dabbling in combat & other dynamic gameplay systems, I've worked diligently to build a portfolio that leaves a lasting impression on my viewers.
                     </p>
                     <div class="about-stats">
                         <div class="stat-row">
@@ -541,8 +567,8 @@
                             <span>Python, Java, JavaScript, Luau</span>
                         </div>
                         <div class="stat-row">
-                            <strong>Commissions:</strong>
-                            <span>50+ Complete</span>
+                            <strong>Contributions:</strong>
+                            <span>Steal A Planet, TBA</span>
                         </div>
                     </div>
                 </div>
@@ -621,12 +647,12 @@
                 <div class="contact-card">
                     <div class="contact-icon">💬</div>
                     <p class="contact-label">Discord</p>
-                    <p class="contact-value">YourDiscord#0000</p>
+                    <p class="contact-value">I_like_pancakes_and_ducks#5751</p>
                 </div>
                 <div class="contact-card">
                     <div class="contact-icon">✉️</div>
                     <p class="contact-label">Email</p>
-                    <p class="contact-value">your.email@example.com</p>
+                    <p class="contact-value">rolfspeaker@gmail.com</p>
                 </div>
             </div>
         </section>
@@ -639,7 +665,7 @@
 
     <!-- Info Banner -->
     <div class="info-banner">
-        This version was created especially for E3. Portfolio coming this fall.
+        This version is evidently a prototype. Final build coming this Augustember.
     </div>
 
     <!-- Bottom Controls -->
