@@ -47,14 +47,14 @@
             left: -25vw; /* more to the left */
             width: 70vw;
             height: 120vh;
-            background: url('filia.png') no-repeat left center;
+            background: url('assets/filia.png') no-repeat left center;
             background-size: 130% auto;
             opacity: 0.08;
             filter: blur(2px) brightness(0.7) contrast(110%);
             pointer-events: none;
             z-index: -1;
         }
-
+        
         /* Right-side Kazuya image with subtle afterimage style */
         /*
        body::after {
@@ -495,8 +495,10 @@
         padding: 1.5rem;
         text-align: center;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
+        text-decoration: none;
+        cursor: pointer;
         }
-
+        
         .contact-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
@@ -599,7 +601,7 @@
            <div class="about-content">
     <div class="about-left">
         <div class="about-image">
-            <img src="rolf_dog_pfp.png" alt="NOT a real photo of ROLFSPEAKER">
+            <img src="assets/rolf_dog_pfp.png" alt="NOT a real photo of ROLFSPEAKER">
         </div>
     </div>
     <div class="about-text">
@@ -694,48 +696,48 @@
 
 
         <!-- Contact Section -->
-        <section id="contact">
-            <div class="section-header">
-                <div class="section-title-box">
+    <section id="contact">
+        <div class="section-header">
+            <div class="section-title-box">
                 <div class="icon">◉</div>
                 <h2>Contact & Socials</h2>
-                </div>
             </div>
+        </div>
 
-            <div class="contact-grid">
-                <div class="contact-card">
+        <div class="contact-grid">
+            <a href="mailto:rolfspeaker@gmail.com" class="contact-card">
                 <div class="contact-icon">
-                    <img src="gmail_logo.png" alt="Email Icon">
+                    <img src="assets/gmail_logo.png" alt="Email Icon">
                 </div>
                 <p class="contact-label">Email</p>
                 <p class="contact-value">rolfspeaker@gmail.com</p>
-                </div>
+            </a>
 
-                <div class="contact-card">
+            <a href="https://discord.gg/AVRbdzCApw" target="_blank" class="contact-card">
                 <div class="contact-icon">
-                    <img src="discord_logo.png" alt="Discord Icon">
+                    <img src="assets/discord_logo.png" alt="Discord Icon">
                 </div>
                 <p class="contact-label">Discord Server</p>
                 <p class="contact-value">discord.gg/AVRbdzCApw</p>
-                </div>
+            </a>
 
-                <div class="contact-card">
+            <a href="https://www.youtube.com/@rolfspeaker6816" target="_blank" class="contact-card">
                 <div class="contact-icon">
-                    <img src="youtube_icon.webp" alt="YouTube Icon">
+                    <img src="assets/youtube_icon.webp" alt="YouTube Icon">
                 </div>
                 <p class="contact-label">YouTube Channel</p>
-                <p class="contact-value">https://www.youtube.com/@rolfspeaker6816</p>
-                </div>
+                <p class="contact-value">@rolfspeaker6816</p>
+            </a>
 
-                <div class="contact-card">
+            <a href="https://payhip.com/RolfSpeaker" target="_blank" class="contact-card">
                 <div class="contact-icon">
-                    <img src="payhip_logo.png" alt="Store Icon">
+                    <img src="assets/payhip_logo.png" alt="Store Icon">
                 </div>
                 <p class="contact-label">Storefront</p>
-                <p class="contact-value">https://payhip.com/RolfSpeaker</p>
-                </div>
-            </div>
-        </section>
+                <p class="contact-value">payhip.com/RolfSpeaker</p>
+            </a>
+        </div>
+    </section>
 
 
         <!-- Footer -->
