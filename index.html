@@ -885,6 +885,18 @@
             observer.observe(section);
         });
 
+        // Menu item hover effects - remove glow when mouse leaves
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.classList.remove('active');
+            });
+        });
+
         // Active menu item
         document.querySelectorAll('.menu-item').forEach(item => {
             item.addEventListener('mouseenter', function() {
@@ -895,22 +907,22 @@
 
                 // Show top nav on scroll
         window.addEventListener('scroll', () => {
-            const topNav = document.querySelector('.top-nav');
-            if (window.scrollY > 100) {
-                topNav.classList.add('visible');
-            } else {
-                topNav.classList.remove('visible');
+        const topNav = document.querySelector('.top-nav');
+        if (window.scrollY > 100) {
+            topNav.classList.add('visible');
+        } else {
+            topNav.classList.remove('visible');
+        }
+        
+        // Update active link based on scroll position
+        let current = '';
+        document.querySelectorAll('section').forEach(section => {
+            const sectionTop = section.offsetTop - 150;
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute('id');
             }
-            
-            // Update active link based on scroll position
-            let current = '';
-            document.querySelectorAll('section').forEach(section => {
-                const sectionTop = section.offsetTop - 150;
-                if (window.scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
+        });
+        
             document.querySelectorAll('.top-nav-links a').forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${current}`) {
