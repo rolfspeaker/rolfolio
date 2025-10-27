@@ -82,6 +82,59 @@
             z-index: 1;
         }
 
+                /* Top Navigation Bar (appears on scroll) */
+        .top-nav {
+            position: fixed;
+            top: -100px;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1001;
+            border-bottom: 2px solid #333;
+            transition: top 0.3s ease;
+        }
+
+        .top-nav.visible {
+            top: 3px;
+        }
+
+        .top-nav .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 3px;
+        }
+
+        .top-nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .top-nav-links a {
+            color: #cccccc;
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .top-nav-links a:hover,
+        .top-nav-links a.active {
+            color: #ffffff;
+            border-bottom-color: #ff0000;
+        }
+
         /* Top Border */
         .top-border {
             position: fixed;
@@ -93,6 +146,7 @@
             z-index: 1000;
         }
 
+        
         /* Bottom Border */
         .bottom-border {
             position: fixed;
@@ -111,8 +165,9 @@
             align-items: center;
             padding: 0 5rem;
             position: relative;
+            z-index: 0;
         }
-
+   
         .hero::before {
             content: '';
             position: absolute;
@@ -123,6 +178,25 @@
             background: radial-gradient(ellipse at 30% 50%, rgba(255, 0, 0, 0.15) 0%, transparent 60%);
             pointer-events: none;
         }
+
+        /* HALFTONE SCRIPT
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;     
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 0, 0, 0.6) 1px, transparent 1px);
+            background-size: 6px 6px;
+            mask-image: radial-gradient(ellipse at 30% 50%, black 0%, transparent 60%);
+            -webkit-mask-image: radial-gradient(ellipse at 30% 50%, black 0%, transparent 60%);
+            pointer-events: none;
+            z-index: -2;
+            transform: rotate(-25deg);  
+            transform-origin: center;
+        }
+        */
 
         .menu-container {
             flex: 1;
@@ -569,8 +643,22 @@
     </style>
 </head>
 <body>
+
+    
     <!-- Top Border -->
     <div class="top-border"></div>
+
+    <!-- Top Navigation (appears on scroll) -->
+    <nav class="top-nav">
+        <div class="logo">ROLFSPEAKER</div>
+        <ul class="top-nav-links">
+            <li><a href="#home" class="active">TITLE SCREEN</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#services">SERVICES</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
 
     <!-- Main Container -->
     <div class="container">
@@ -582,12 +670,12 @@
                     <h2 class="subtle-glow">PORTFOLIO CAMPAIGN</h2>
                 </div>
                 <div class="menu-description">
-                    Enjoy the gallery walk, decorated in a style you won't find anywhere else.
+                    Enjoy the gallery walk, fashioned in a visual style you won't find anywhere else.
                 </div>
                 
                 <ul class="menu-list">
                     <li><a href="#about" class="menu-item"><span>Story Mode</span></a></li>
-                    <li><a href="#services" class="menu-item"><span>Services</span></a></li>
+                    <li><a href="#services" class="menu-item"><span>Profile</span></a></li>
                     <li><a href="#projects" class="menu-item"><span>Gallery</span></a></li>
                     <li><a href="#contact" class="menu-item"><span>Options</span></a></li>
                     <li><a href="#" class="menu-item"><span>V.S. Mode</span></a></li>
@@ -604,31 +692,32 @@
                 </div>
             </div>
            <div class="about-content">
-    <div class="about-left">
-        <div class="about-image">
-            <img src="assets/rolf_dog_pfp.png" alt="NOT a real photo of ROLFSPEAKER">
-        </div>
-    </div>
-    <div class="about-text">
-        <p>
-            I'm RolfSpeaker, an aspiring full-stack Luau programmer with a penchant for pushing boundaries. I breathe life into projects through a signature blend of creativity and efficacy. With years of experience dabbling in combat & other dynamic gameplay systems, I've worked diligently to build a portfolio that leaves a lasting impression on my viewers.
-        </p>
-        <div class="about-stats">
-            <div class="stat-row">
-                <strong>Quick Contact:</strong>
-                <span>I_like_pancakes_and_ducks#5751 on Discord</span>
-            </div>
-            <div class="stat-row">
-                <strong>Languages:</strong>
-                <span>Python, Java, JavaScript, Luau</span>
-            </div>
-            <div class="stat-row">
-                <strong>Contributions:</strong>
-                <span>Steal A Planet, TBA</span>
+        <div class="about-left">
+            <div class="about-image">
+                <img src="assets/rolf_dog_pfp.png" alt="NOT a real photo of ROLFSPEAKER">
+                <div class="img__description">(Not a real photo of the Speaker)</div>
             </div>
         </div>
-    </div>
-</div>
+        <div class="about-text">
+            <p>
+                I'm RolfSpeaker, an aspiring full-stack Luau programmer with a penchant for pushing boundaries. I breathe life into projects through a signature blend of creativity and efficacy. With years of experience dabbling in combat & other dynamic gameplay systems, I've worked diligently to build a portfolio that leaves a lasting impression on my viewers.
+            </p>
+            <div class="about-stats">
+                <div class="stat-row">
+                    <strong>Quick Contact:</strong>
+                    <span>I_like_pancakes_and_ducks#5751 on Discord</span>
+                </div>
+                <div class="stat-row">
+                    <strong>Languages:</strong>
+                    <span>Python, Java, JavaScript, Luau</span>
+                </div>
+                <div class="stat-row">
+                    <strong>Contributions:</strong>
+                    <span>Steal A Planet, TBA</span>
+                </div>
+            </div>
+        </div>
+        </div>
         </section>
 
         <!-- Services Section -->
@@ -803,6 +892,33 @@
                 this.classList.add('active');
             });
         });
+
+                // Show top nav on scroll
+        window.addEventListener('scroll', () => {
+            const topNav = document.querySelector('.top-nav');
+            if (window.scrollY > 100) {
+                topNav.classList.add('visible');
+            } else {
+                topNav.classList.remove('visible');
+            }
+            
+            // Update active link based on scroll position
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.top-nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
     </script>
 </body>
 </html>
