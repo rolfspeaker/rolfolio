@@ -44,8 +44,8 @@
             content: "";
             position: fixed;
             top: 0;
-            left: -25vw; /* more to the left */
-            width: 70vw;
+            left: -35vw; /* more to the left */
+            width: 100vw;
             height: 120vh;
             background: url('assets/filia.png') no-repeat left center;
             background-size: 130% auto;
@@ -82,7 +82,7 @@
             z-index: 1;
         }
 
-                /* Top Navigation Bar (appears on scroll) */
+        /* Top Navigation Bar (appears on scroll) */
         .top-nav {
             position: fixed;
             top: -100px;
@@ -101,7 +101,7 @@
         .top-nav.visible {
             top: 3px;
         }
-
+        
         .top-nav .logo {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.5rem;
@@ -652,7 +652,7 @@
     <nav class="top-nav">
         <div class="logo">ROLFSPEAKER</div>
         <ul class="top-nav-links">
-            <li><a href="#home" class="active">TITLE SCREEN</a></li>
+            <li><a href="#home" class="active">NAVIGATION</a></li>
             <li><a href="#about">ABOUT</a></li>
             <li><a href="#services">SERVICES</a></li>
             <li><a href="#projects">PROJECTS</a></li>
@@ -923,13 +923,13 @@
             }
         });
         
-            document.querySelectorAll('.top-nav-links a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
+        document.querySelectorAll('.top-nav-links a').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
         });
+      });
 
     </script>
 </body>
