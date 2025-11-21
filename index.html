@@ -73,8 +73,75 @@
         }
         */
 
+        /* What I Don't Do & Code of Conduct Sections */
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
 
+        .expectations-section {
+            background: rgba(20, 20, 20, 0.8);
+            border: 2px solid #333;
+            border-left: 4px solid #ff0000;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+        }
 
+        .expectations-section h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: #ff3333;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-style: italic;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 1rem;
+        }
+
+        .expectations-list {
+            list-style: none;
+            flex-grow: 1;
+        }
+
+        .expectations-list li {
+            padding: 0.8rem 1.5rem;
+            margin: 0.5rem 0;
+            background: rgba(40, 40, 40, 0.6);
+            border-left: 3px solid #ff0000;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .expectations-list li strong {
+            color: #ff3333;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .expectations-list li::before {
+            content: '▸ ';
+            color: #ff0000;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Don't Do List - X marks instead */
+        .dont-do-list li::before {
+            content: '✕ ';
+            color: #ff0000;
+        }
+
+        /* Responsive for terms grid */
+        @media (max-width: 1024px) {
+            .terms-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
         /* Main Container */
         .container {
@@ -652,7 +719,7 @@
     <nav class="top-nav">
         <div class="logo">ROLFSPEAKER</div>
         <ul class="top-nav-links">
-            <li><a href="#home" class="active">NAVIGATION</a></li>
+            <li><a href="#home" class="active">HOME</a></li>
             <li><a href="#about">ABOUT</a></li>
             <li><a href="#services">SERVICES</a></li>
             <li><a href="#projects">PROJECTS</a></li>
@@ -677,8 +744,8 @@
                     <li><a href="#about" class="menu-item"><span>Story Mode</span></a></li>
                     <li><a href="#services" class="menu-item"><span>Profile</span></a></li>
                     <li><a href="#projects" class="menu-item"><span>Gallery</span></a></li>
-                    <li><a href="#contact" class="menu-item"><span>Options</span></a></li>
-                    <li><a href="#" class="menu-item"><span>V.S. Mode</span></a></li>
+                    <li><a href="#terms" class="menu-item"><span>Settings</span></a></li> <!-- Used to be "Options". Originally led to the Contact section. -->
+                    <li><a href="#contact" class="menu-item"><span>Online Mode</span></a></li> <!-- Used to be "V.S Mode". Originally a placebo. -->
                 </ul>
             </div>
         </section>
@@ -743,7 +810,8 @@
                 </div>
             </div>
         </section>
-
+        
+        
         <!-- Projects Section -->
         <section id="projects">
         <div class="section-header">
@@ -788,13 +856,46 @@
         </div>
         </section>
 
+        <!-- Terms & Expectations Section -->
+        <section id="terms">
+            <div class="section-header">
+                <div class="section-title-box">
+                    <div class="menu-icon">◉</div>
+                    <h2 class="subtle-glow">Terms</h2>
+                </div>
+            </div>
+
+            <div class="terms-grid">
+                <div class="expectations-section">
+                    <h3>Code of Conduct</h3>
+                    <ul class="expectations-list">
+                        <li><strong>TRANSPARENCY</strong> – If challenges arise, I'll communicate them promptly and explore solutions, updating you every step of the way.</li>
+                        <li><strong>ROBUST CODE</strong> – All scripted works are tested and optimized before handoff.</li>
+                        <li><strong>CONFIDENTIALITY</strong> – Your project details and assets remain private unless explicitly agreed otherwise.</li>
+                        <li><strong>CONSCIENTIOUSNESS</strong> – Your time and money WILL be respected; expect honest, charitable timekeeping.</li>
+                    </ul>
+                </div>
+
+                <div class="expectations-section">
+                    <h3>What I Don't Do (Yet)</h3>
+                    <ul class="expectations-list dont-do-list">
+                        <li>🚗 Vehicles</li>
+                        <!-- <li>⚔️ RPG games</li> -->
+                        <li>🧑🏿‍💻 Anti-cheats</li>
+                        <li>🤖 Sophisticated NPCs</li>
+                        <li>🔫 First-person shooter systems</li>
+                        <li>💨 Advanced physics manipulation/custom physics</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
         <!-- Contact Section -->
         <section id="contact">
             <div class="section-header">
             <div class="section-title-box">
                 <div class="menu-icon">◉</div>
-                <h2 class="subtle-glow">Contact & Socials</h2>
+                <h2 class="subtle-glow">Online Links</h2>
             </div>
         </div>
 
